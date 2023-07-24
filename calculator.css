@@ -1,0 +1,43 @@
+
+
+h1 {
+    margin-left: 30px;
+}
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: fit-content;
+    height: auto;
+    border: 3px solid black;
+    border-style;
+    background: rgb(255, 255, 198);
+    margin-left: 30px;
+    box-shadow: 2px 2px 1px black;
+    border-radius: 10px;
+}
+.display {
+    font-size: 25px;
+    display: flex;
+    grid-column: 1 / span 4;
+    height: 80px;
+    justify-content: flex-end;
+    align-items: end;
+    padding: 8px;
+    border-bottom: 2px solid red;
+    margin-bottom: 2px;
+
+}
+
+button {
+    font-size: 25px;
+    border: 4px solid white;
+    border-style: outset;
+    transition: 0.5s;
+    width: 60px;
+    height: 60px;
+    margin: 3px;
+}
+
+.footer{
+    margin-left: 30px;
+}
