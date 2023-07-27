@@ -3,6 +3,7 @@ const btns = Array.from(document.querySelectorAll('button'));
 const display = document.querySelector('#display');
 const operators = Array.from(document.querySelectorAll('.operator'));
 const numbers = Array.from(document.querySelectorAll('.container > .number'));
+const dot = document.querySelector('#dot');
 const del = document.querySelector('#del');
 const ac = document.querySelector('#AC');
 
@@ -21,14 +22,16 @@ function dividing( a, b){
 }
 let x = '';
 let op = false;
+let point = false;
 
 operators.forEach(operator => operator.addEventListener('click', (e) => {
-    let y = ' ' + operator.textContent +' ';
+    let y = operator.textContent;
     if (op == false) return;
     x = x + y;
     console.log(y);
     display.textContent = x ;
     op = false;
+    point = false;
     console.log(x);
 
 }));
@@ -61,11 +64,22 @@ btns.forEach(button => button.addEventListener('mouseup', (e) => {
      button.style.backgroundColor = '';
      button.style.borderStyle = '';
  }));
+
+
+ dot.addEventListener('click', (e) => {
+    let y = dot.textContent;
+    if ( point == true) {return};
+    x = x + y;
+    display.textContent = x;
+    point = true;
+    console.log(e);
+
+ });
+
+
  del.addEventListener('click', (e) => {
- //   display.textContent = '';
     x = x.slice(0, -1);
     display.textContent = x;
-   // x = '';
     console.log(x);
 
  });
@@ -73,7 +87,6 @@ btns.forEach(button => button.addEventListener('mouseup', (e) => {
  ac.addEventListener('click', (e) => {
     display.textContent = '';
     x = '';
-
     console.log(e);
  });
 

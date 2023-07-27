@@ -12,7 +12,7 @@ body{
 .container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    width: fit-content;
+    max-width: max-content;
     height: auto;
     border: 3px solid black;
     background: rgb(255, 255, 198);
@@ -23,6 +23,8 @@ body{
     font-size: 25px;
     display: flex;
     grid-column: 1 / span 4;
+    max-width: 290px;
+    flex-wrap: wrap-reverse;
     height: 80px;
     justify-content: flex-end;
     align-items: end;
