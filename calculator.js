@@ -8,11 +8,11 @@ const dot = document.querySelector('#dot');
 const equal = document.querySelector('#equal');
 const del = document.querySelector('#del');
 const ac = document.querySelector('#AC');
+const finalsesult = document.querySelector('#finalresult');
 
 //let c = 0;
 //let d = 0;
-function adding(){
-   
+function adding(a, b){
     return a + b;
 }
 function substraction(a, b){
@@ -24,6 +24,9 @@ function multiplication( a, b){
 function dividing( a, b){
     return a - b;
 }
+function percentage(a, b){
+    return  a * b / 100;
+}
 let op = false;
 let point = false;
 let arg = 0;
@@ -32,6 +35,7 @@ let x = '';
 let a = 0;
 let b = 0;
 const str = [a, b];
+let opp = '';
 
 
 
@@ -49,6 +53,7 @@ numbers.forEach(number => number.addEventListener('click', (e) => {
 
 operators.forEach(operator => operator.addEventListener('click', (e) => {
     let y = operator.textContent;
+    opp = operator.textContent;
     if (op == false) return;
     x = x + y;
     console.log(y);
@@ -61,11 +66,11 @@ operators.forEach(operator => operator.addEventListener('click', (e) => {
     str[0] = z
     arg = 1;
     console.log(str[0]);
-    } else if ( arg == 1) {
-        let w = Number.parseFloat(b);
-        str[1] = w;
-        arg = 0;
-    }
+    } //else if ( arg == 1) {
+      //  let w = Number.parseFloat(b);
+     //   str[1] = w;
+       // arg = 0;
+   // }
     console.log(str[0]);
     console.log(str[1]);
 
@@ -111,12 +116,46 @@ btns.forEach(button => button.addEventListener('mouseup', (e) => {
 
  ac.addEventListener('click', (e) => {
     display.textContent = '';
+    finalsesult.textContent = 0;
+
     x = '';
+    a = 0;
+    b = 0;
     point = false;
  });
 
 equal.addEventListener('click', () => {
+    if ( arg == 1) {
+        let w = Number.parseFloat(b);
+        str[1] = w;
+        arg = 0;
+    
+        if ( opp == '+'){ 
+            document.getElementById('finalresult').textContent = adding(a, b);
+            a = +finalsesult.textContent;
+            b = 0;
+        }
+        else if ( opp == '-') {
+            document.getElementById('finalresult').textContent = substraction(a, b)
+            a = +finalsesult.textContent;
+            b = 0;
+        }
+        else if ( opp == 'x') { 
+            document.getElementById('finalresult').textContent = multiplication(a, b)
+            a = +finalsesult.textContent;
+            b = 0;       
+        }
+        else if ( opp == '/') { 
+            document.getElementById('finalresult').textContent = dividing(a, b)
+            a = +finalsesult.textContent;
+            b = 0;
+        } 
+        else if ( opp == '%') { 
+            document.getElementById('finalresult').textContent = percentage(a, b)
+            a = +finalsesult.textContent;
+            b = 0;
+        } 
+    }
+    console.log(opp)
 
-   console.log(substraction(a, b));
-
-})
+});
