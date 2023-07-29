@@ -3,15 +3,12 @@ const btns = Array.from(document.querySelectorAll('button'));
 const display = document.querySelector('#display');
 const operators = Array.from(document.querySelectorAll('.operator'));
 const numbers = Array.from(document.querySelectorAll('.container > .number'));
-const plus = document.querySelector('#plus');
 const dot = document.querySelector('#dot');
 const equal = document.querySelector('#equal');
 const del = document.querySelector('#del');
 const ac = document.querySelector('#AC');
 const finalsesult = document.querySelector('#finalresult');
 
-//let c = 0;
-//let d = 0;
 function adding(a, b){
     return a + b;
 }
@@ -22,7 +19,7 @@ function multiplication( a, b){
     return a * b;
 }
 function dividing( a, b){
-    return a - b;
+    return a / b;
 }
 function percentage(a, b){
     return  a * b / 100;
@@ -66,11 +63,7 @@ operators.forEach(operator => operator.addEventListener('click', (e) => {
     str[0] = z
     arg = 1;
     console.log(str[0]);
-    } //else if ( arg == 1) {
-      //  let w = Number.parseFloat(b);
-     //   str[1] = w;
-       // arg = 0;
-   // }
+    } 
     console.log(str[0]);
     console.log(str[1]);
 
