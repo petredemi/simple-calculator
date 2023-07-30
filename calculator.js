@@ -92,8 +92,10 @@ btns.forEach(button => button.addEventListener('mouseup', (e) => {
  });
 
  del.addEventListener('click', (e) => {
-    equalButton = false;
+    let q = display.textContent;
+
    if ( arg == 0) {
+        if (equalButton == true){ return;}
         console.log(typeof a);
         let x;
         let y = a.toString();
@@ -102,13 +104,12 @@ btns.forEach(button => button.addEventListener('mouseup', (e) => {
         a = Number(x);
         console.log(x);
         console.log(z);
-        display.textContent = a.toString();
+        console.log(q);
         if( a == 0){
             display.textContent = '';
         }
         if ( z == '.'){
         point = false;
-
         }
 
     } else if ( arg == 1){
@@ -117,15 +118,15 @@ btns.forEach(button => button.addEventListener('mouseup', (e) => {
         let z = y.slice(-1);
         x = y.slice(0, -1);
         b = Number(x);
-        display.textContent = a.toString() + opp + b.toString();
-        if( b == 0){
-            display.textContent = a.toString();
-        }
-
         if ( z == '.'){
         point = false;
         }
     }
+    display.textContent = q.slice(0, -1);
+    equalButton = false;
+
+    console.log(typeof q);
+    console.log(q);
  });
 
  ac.addEventListener('click', (e) => {
