@@ -27,8 +27,9 @@ function percentage(a, b){
 let op = false;
 let point = false;
 let arg = 0;
+let equalButton = false;
 
-let x = '';
+//let x = '';
 let a = 0;
 let b = 0;
 const str = [a, b];
@@ -37,35 +38,31 @@ let opp = '';
 
 
 numbers.forEach(number => number.addEventListener('click', (e) => {
-    let y = number.textContent;
+    if (equalButton == true) { return;}
     op = true;
-    x = x + y;
-    display.textContent = x ;
     if ( arg == 0){
     a = + (a + number.textContent);
+    display.textContent = a;
     } else if (arg == 1) {
         b = +(b + number.textContent);
+        display.textContent = a.toString() + opp + b.toString();
     }
 }));
 
 operators.forEach(operator => operator.addEventListener('click', (e) => {
-    let y = operator.textContent;
+    equalButton = false;
     opp = operator.textContent;
     if (op == false) return;
-    x = x + y;
-    console.log(y);
-    display.textContent = x ;
     op = false;
     point = false;
-    console.log(x);
     if(arg == 0){
+    display.textContent = a.toString() + opp ;
     let z = Number.parseFloat(a);
     str[0] = z
     arg = 1;
     console.log(str[0]);
     } 
     console.log(str[0]);
-    console.log(str[1]);
 
 
 }));
@@ -81,29 +78,53 @@ btns.forEach(button => button.addEventListener('mouseup', (e) => {
  }));
 
  dot.addEventListener('click', (e) => {
-    let y = dot.textContent;
     if ( point == true) {return};
-    x = x + y;
-    display.textContent = x;
-    point = true;
     if ( arg == 0) {
     a = a + dot.textContent;
+    display.textContent = a.toString();
+    point = true;
     } else if ( arg == 1){
         b = b + dot.textContent;
+        display.textContent = b.toString();
+        point = true;
     }
 
  });
 
  del.addEventListener('click', (e) => {
-
-    let y = x;
-    x = x.slice(0, -1);
-    z = y.slice(-1);
-    display.textContent = x;
-    console.log(x);
-
-    if( z == "." ) {
+    equalButton = false;
+   if ( arg == 0) {
+        console.log(typeof a);
+        let x;
+        let y = a.toString();
+        let z = y.slice(-1);
+        x = y.slice(0, -1);
+        a = Number(x);
+        console.log(x);
+        console.log(z);
+        display.textContent = a.toString();
+        if( a == 0){
+            display.textContent = '';
+        }
+        if ( z == '.'){
         point = false;
+
+        }
+
+    } else if ( arg == 1){
+        let x;
+        let y = b.toString();
+        let z = y.slice(-1);
+        x = y.slice(0, -1);
+        b = Number(x);
+        display.textContent = a.toString() + opp + b.toString();
+        if( b == 0){
+            display.textContent = a.toString();
+        }
+
+        if ( z == '.'){
+        point = false;
+        }
     }
  });
 
@@ -111,10 +132,10 @@ btns.forEach(button => button.addEventListener('mouseup', (e) => {
     display.textContent = '';
     finalsesult.textContent = 0;
 
-    x = '';
     a = 0;
     b = 0;
     point = false;
+    equalButton = false;
  });
 
 equal.addEventListener('click', () => {
@@ -122,6 +143,10 @@ equal.addEventListener('click', () => {
         let w = Number.parseFloat(b);
         str[1] = w;
         arg = 0;
+        equalButton = true;
+        console.log(str[1]);
+        display.textContent = display.textContent.concat(equal.textContent);
+
     
         if ( opp == '+'){ 
             document.getElementById('finalresult').textContent = adding(a, b);
