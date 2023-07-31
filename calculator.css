@@ -1,8 +1,8 @@
 /* {
     border: 1px solid red;
     margin: 3px;
-}
-*/
+}*/
+
 body{
     display: flex;
     justify-content: center;
@@ -24,20 +24,23 @@ body{
 .results{
     display: block;
     grid-column: 1 / span 4;
-    max-width: 290px;
-    height: 100px;
-    margin-bottom: 4px;
+    max-width: 310px;
+    height: 120px;
+    margin: 4px;
+    border-color: 2px solid black;
 }
 
 #display {
     font-size: 22px;
+    color: rgb(22, 26, 155);
+    background: white;
     display: flex;
     max-width: 300px;
     height: 30px;
     justify-content: flex-end;
     align-items: end;
     padding: 5px;
-    border-bottom: 2px solid red;
+    border-bottom: 3px solid red;
     margin-top: 10px;
     margin-bottom: 2px;
 
@@ -45,18 +48,25 @@ body{
 #finalresult{
     display: flex;
     max-width: 300px;
-    height: 35px;
-    font-size: 30px;
+    height: 45px;
+    font-size: 40px;
+    color: red;
+    background: white;
+    font-weight: 800;
+    text-shadow: 2px 2px 0px black ;
     padding: 2px;
     justify-content: flex-end;
     align-items: end;
-    border-bottom: 2px solid red;
+    border-bottom: 3px solid black;
 
 }
 
 
 button {
     font-size: 25px;
+    color: white;
+    text-shadow: 2px 2px 0px black;
+    font-weight: 600;
     background: rgb(93, 217, 242);
     border: 4px solid white;
     border-style: outset;
@@ -65,7 +75,9 @@ button {
     min-height: 70px;
     margin: 3px;
 }
-
+#AC {
+    background: rgb(153, 240, 153);
+}
 .footer{
     margin-left: 30px;
 }
