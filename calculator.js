@@ -24,16 +24,15 @@ function dividing( a, b){
 function percentage(a, b){
     return  a * b / 100;
 }
-let op = false;
-let point = false;
-let arg = 0;
+let op = false; //operators buttons
+let point = false; // dot button
+let arg = 0; // switch between function arguments a and b;
 let equalButton = false;
 
-//let x = '';
 let a = 0;
 let b = 0;
-const str = [a, b];
-let opp = '';
+const str = [a, b]; //function arguments
+let opp = ''; //operator type +, - , *, /, %
 
 
 
@@ -42,7 +41,7 @@ numbers.forEach(number => number.addEventListener('click', (e) => {
     op = true;
     if ( arg == 0){
     a = + (a + number.textContent);
-    display.textContent = a;
+    display.textContent = a.toString();
     } else if (arg == 1) {
         b = +(b + number.textContent);
         display.textContent = a.toString() + opp + b.toString();
