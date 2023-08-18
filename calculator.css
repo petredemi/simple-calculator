@@ -16,9 +16,10 @@ body{
     grid-template-columns: repeat(4, 1fr);
     max-width: max-content;
     height: auto;
+    padding: 9px;
     border: 4px solid black;
-    background: rgb(255, 255, 198);
-    box-shadow: 4px 4px 1px rgb(107, 103, 103);
+    background: rgb(110, 193, 234);
+    box-shadow: 6px 4px 1px rgb(149, 143, 143);
     border-radius: 10px;
 }
 .results{
@@ -81,7 +82,7 @@ button {
 
 }
 #AC, #del{
-    background: rgb(153, 240, 153);
+    background: rgb(34, 139, 34);
     text-shadow: 2px 2px 0px black;
 
 }

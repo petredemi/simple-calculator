@@ -136,7 +136,7 @@ btns.forEach(button => button.addEventListener('mouseup', (e) => {
 
  ac.addEventListener('click', (e) => {
     display.textContent = '';
-    finalresult.textContent = 0;
+    finalresult.textContent = '';
 
     a = 0;
     b = 0;
