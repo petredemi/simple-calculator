@@ -65,9 +65,9 @@ body{
 button {
     font-size: 25px;
     color: white;
-    text-shadow: 2px 2px 0px black;
+    text-shadow: 2px 2px 0px rgb(234, 54, 54);
     font-weight: 600;
-    background: rgb(93, 217, 242);
+    background: rgb(42, 45, 45);
     border: 4px solid white;
     border-style: outset;
     transition: 0.5s;

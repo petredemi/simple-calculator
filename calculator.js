@@ -7,10 +7,11 @@ const dot = document.querySelector('#dot');
 const equal = document.querySelector('#equal');
 const del = document.querySelector('#del');
 const ac = document.querySelector('#AC');
-const finalsesult = document.querySelector('#finalresult');
+const finalresult = document.querySelector('#finalresult');
 
 function adding(a, b){
-    return a + b;
+     let x = a + b ;
+     return Number(x.toFixed(4));
 }
 function substraction(a, b){
     return a - b; 
@@ -26,43 +27,40 @@ function percentage(a, b){
 }
 let op = false; //operators buttons
 let point = false; // dot button
-let arg = 0; // switch between function arguments a and b;
+let arg = 'a'; // switch between function arguments a or b;
 let equalButton = false;
 
 let a = 0;
-let b = 0;
-const str = [a, b]; //function arguments
+let b  = 0;
+//const str = [a, b]; //function arguments
 let opp = ''; //operator type +, - , *, /, %
 
 
 
 numbers.forEach(number => number.addEventListener('click', (e) => {
-    if (equalButton == true) { return;}
+    if (equalButton == true ) { return;}
     op = true;
-    if ( arg == 0){
-    a = + (a + number.textContent);
+    if ( arg == 'a'){
+    a = Number(a + number.textContent);
     display.textContent = a.toString();
-    } else if (arg == 1) {
-        b = +(b + number.textContent);
+   
+    } else if (arg == 'b') {
+        b = Number(b + number.textContent);
         display.textContent = a.toString() + opp + b.toString();
     }
 }));
 
 operators.forEach(operator => operator.addEventListener('click', (e) => {
+    if (op == false) return;
     equalButton = false;
     opp = operator.textContent;
-    if (op == false) return;
     op = false;
     point = false;
-    if(arg == 0){
-    display.textContent = a.toString() + opp ;
-    let z = Number.parseFloat(a);
-    str[0] = z
-    arg = 1;
-    console.log(str[0]);
+    if(arg == 'a'){
+    display.textContent = a.toString() + operator.textContent ;
+   
     } 
-    console.log(str[0]);
-
+    arg = 'b';
 
 }));
 
@@ -78,102 +76,104 @@ btns.forEach(button => button.addEventListener('mouseup', (e) => {
 
  dot.addEventListener('click', (e) => {
     if ( point == true) {return};
-    if ( arg == 0) {
+    if ( arg == 'a') {
     a = a + dot.textContent;
     display.textContent = a.toString();
     point = true;
-    } else if ( arg == 1){
+    
+    } else if ( arg == 'b'){
         b = b + dot.textContent;
-        display.textContent = b.toString();
+        display.textContent = a.toString() + opp + b.toString();
         point = true;
     }
 
  });
 
  del.addEventListener('click', (e) => {
-    let q = display.textContent;
+    if (equalButton == true){return;}
+   
+    if ( arg == 'a') {
+            let y = a.toString();
+            let xa = y.slice(0, -1);
+            let d = y.slice(-1);
+            let aDot = xa.includes('.');
+            a = Number(xa);
+            display.textContent = xa;
+            console.log(aDot);
+            console.log(arg);
+            console.log(y);
+            console.log(d);
+            if (aDot == false){
 
-   if ( arg == 0) {
-        if (equalButton == true){ return;}
-        console.log(typeof a);
-        let x;
-        let y = a.toString();
-        let z = y.slice(-1);
-        x = y.slice(0, -1);
-        a = Number(x);
-        console.log(x);
-        console.log(z);
-        console.log(q);
-        if( a == 0){
-            display.textContent = '';
-        }
-        if ( z == '.'){
-        point = false;
-        }
-
-    } else if ( arg == 1){
-        let x;
+                point = false;
+            } //else if ( aDot == true){
+                //point = true;
+           // }
+    } else if ( arg == 'b'){
         let y = b.toString();
-        let z = y.slice(-1);
-        x = y.slice(0, -1);
-        b = Number(x);
-        if ( z == '.'){
-        point = false;
-        }
-    }
-    display.textContent = q.slice(0, -1);
+        let xb = y.slice(0, -1);
+        let bDot = y.includes('.'); 
+        b = Number(xb);
+        
+        display.textContent = a.toString() + opp + xb;
+   
+        console.log(bDot);
+        console.log(arg);
+        if (bDot == false){
+            point = false;
+        } //else if ( bDot == true) {
+            //point = true;
+        //}
+    } 
+
     equalButton = false;
 
-    console.log(typeof q);
-    console.log(q);
  });
 
  ac.addEventListener('click', (e) => {
     display.textContent = '';
-    finalsesult.textContent = 0;
+    finalresult.textContent = 0;
 
     a = 0;
     b = 0;
+    arg = 'a';
+    op = false;
     point = false;
     equalButton = false;
  });
 
 equal.addEventListener('click', () => {
-    if ( arg == 1) {
-        let w = Number.parseFloat(b);
-        str[1] = w;
-        arg = 0;
+    if ( arg == 'b') {
+        arg = 'a';
         equalButton = true;
-        console.log(str[1]);
+        point = true;
         display.textContent = display.textContent.concat(equal.textContent);
-
     
         if ( opp == '+'){ 
             document.getElementById('finalresult').textContent = adding(a, b);
-            a = +finalsesult.textContent;
+            a = +finalresult.textContent;
             b = 0;
         }
         else if ( opp == '-') {
             document.getElementById('finalresult').textContent = substraction(a, b)
-            a = +finalsesult.textContent;
+            a = +finalresult.textContent;
             b = 0;
         }
         else if ( opp == 'x') { 
             document.getElementById('finalresult').textContent = multiplication(a, b)
-            a = +finalsesult.textContent;
+            a = +finalresult.textContent;
             b = 0;       
         }
         else if ( opp == '/') { 
             document.getElementById('finalresult').textContent = dividing(a, b)
-            a = +finalsesult.textContent;
+            a = +finalresult.textContent;
             b = 0;
         } 
         else if ( opp == '%') { 
             document.getElementById('finalresult').textContent = percentage(a, b)
-            a = +finalsesult.textContent;
+            a = +finalresult.textContent;
             b = 0;
         } 
     }
-    console.log(opp)
 
 });
