@@ -14,16 +14,20 @@ function adding(a, b){
      return Number(x.toFixed(4));
 }
 function substraction(a, b){
-    return a - b; 
+    let x = a - b;
+    return Number(x.toFixed(4)); 
 }
 function multiplication( a, b){
-    return a * b;
+    let x = a * b;
+    return Number(x.toFixed(4));
 }
 function dividing( a, b){
-    return a / b;
+    let x = a / b;
+    return Number(x.toFixed(4));
 }
 function percentage(a, b){
-    return  a * b / 100;
+    x = a * b / 100;
+    return  Number(x.toFixed(2));
 }
 let op = false; //operators buttons
 let point = false; // dot button
