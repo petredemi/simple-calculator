@@ -37,16 +37,13 @@ let equalButton = false;
 let a = 0;
 let b  = 0;
 let opp = ''; //operator type +, - , *, /, %
-let minus = ''; // minus sign in front of first number
-
 
 numbers.forEach(number => number.addEventListener('click', (e) => {
     if (equalButton == true ) { return;}
     op = true;
     if ( arg == 'a'){
-    a = Number(minus + a + number.textContent);
+    a = Number(a + number.textContent);
     display.textContent = a.toString();
-    minus = '';
    
     } else if (arg == 'b') {
         b = Number(b + number.textContent);
@@ -56,10 +53,6 @@ numbers.forEach(number => number.addEventListener('click', (e) => {
 
 operators.forEach(operator => operator.addEventListener('click', (e) => {
     opp = operator.textContent;
-    if ( opp == '-'){ 
-        minus = '-';
-        display.textContent = minus;
-    }
 
     if (op == false) return;
     equalButton = false;
