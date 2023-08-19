@@ -52,12 +52,12 @@ numbers.forEach(number => number.addEventListener('click', (e) => {
 }));
 
 operators.forEach(operator => operator.addEventListener('click', (e) => {
-    opp = operator.textContent;
-
     if (op == false) return;
     equalButton = false;
     op = false;
     point = false;
+    opp = operator.textContent;
+
     if(arg == 'a'){
     display.textContent = a.toString() + operator.textContent ;
    
