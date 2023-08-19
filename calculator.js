@@ -40,12 +40,13 @@ let opp = ''; //operator type +, - , *, /, %
 
 numbers.forEach(number => number.addEventListener('click', (e) => {
     if (equalButton == true ) { return;}
-    op = true;
     if ( arg == 'a'){
+    op = true;  
     a = Number(a + number.textContent);
     display.textContent = a.toString();
    
     } else if (arg == 'b') {
+        op = false;
         b = Number(b + number.textContent);
         display.textContent = a.toString() + opp + b.toString();
     }
@@ -150,6 +151,7 @@ equal.addEventListener('click', () => {
         arg = 'a';
         equalButton = true;
         point = true;
+        op = true;
         display.textContent = display.textContent.concat(equal.textContent);
     
         if ( opp == '+'){ 
