@@ -40,29 +40,36 @@ let opp = ''; //operator type +, - , *, /, %
 
 numbers.forEach(number => number.addEventListener('click', (e) => {
     if (equalButton == true ) { return;}
+
     if ( arg == 'a'){
-    op = true;  
-    a = Number(a + number.textContent);
-    display.textContent = a.toString();
+        let a_string = a.toString(); 
+        if (a_string.length <= 10){   
+            op = true;  
+            a = Number(a + number.textContent);
+            display.textContent = a.toString();
+        } else { return;}
    
     } else if (arg == 'b') {
-        op = false;
-        b = Number( b + number.textContent);
-        display.textContent = a.toString() + opp + b.toString();
-    }
+        let b_string = b.toString();
+        if ( b_string.length <= 10 ){    
+            op = false;
+            b = Number( b + number.textContent);
+            display.textContent = a.toString() + opp + b.toString();  
+        } else {return;}
+    }    
 }));
 
 operators.forEach(operator => operator.addEventListener('click', (e) => {
     if (op == false) return;
-    equalButton = false;
-    op = false;
-    point = false;
-    opp = operator.textContent;
-    finalresult.textContent = '';
+        equalButton = false;
+        op = false;
+        point = false;
+        opp = operator.textContent;
+        finalresult.textContent = '';
  //   a = Number(a);
 
     if(arg == 'a'){
-    display.textContent = a.toString() + operator.textContent ;
+        display.textContent = a.toString() + operator.textContent ;
    
     } 
     arg = 'b';
@@ -84,10 +91,10 @@ btns.forEach(button => button.addEventListener('mouseup', (e) => {
  dot.addEventListener('click', (e) => {
     if ( point == true) {return};
     if ( arg == 'a'){
-    a = a + dot.textContent;
+        a = a + dot.textContent;
   //  a = a + pc;
-    display.textContent = a.toString();
-    point = true;
+        display.textContent = a.toString();
+        point = true;
     
     } else if ( arg == 'b'){
         b = b + dot.textContent;
