@@ -47,7 +47,7 @@ numbers.forEach(number => number.addEventListener('click', (e) => {
    
     } else if (arg == 'b') {
         op = false;
-        b = Number(b + number.textContent);
+        b = Number( b + number.textContent);
         display.textContent = a.toString() + opp + b.toString();
     }
 }));
@@ -58,6 +58,8 @@ operators.forEach(operator => operator.addEventListener('click', (e) => {
     op = false;
     point = false;
     opp = operator.textContent;
+    finalresult.textContent = '';
+ //   a = Number(a);
 
     if(arg == 'a'){
     display.textContent = a.toString() + operator.textContent ;
@@ -77,11 +79,13 @@ btns.forEach(button => button.addEventListener('mouseup', (e) => {
      button.style.backgroundColor = '';
      button.style.borderStyle = '';
  }));
+ let pc = '.';
 
  dot.addEventListener('click', (e) => {
     if ( point == true) {return};
-    if ( arg == 'a') {
+    if ( arg == 'a'){
     a = a + dot.textContent;
+  //  a = a + pc;
     display.textContent = a.toString();
     point = true;
     
@@ -93,47 +97,55 @@ btns.forEach(button => button.addEventListener('mouseup', (e) => {
 
  });
 
+
  del.addEventListener('click', (e) => {
     if (equalButton == true){return;}
-   
     if ( arg == 'a') {
             let y = a.toString();
             let xa = y.slice(0, -1);
             let d = y.slice(-1);
             let aDot = xa.includes('.');
-            a = Number(xa);
             display.textContent = xa;
+            if (xa.endsWith('.')){
+                a =  +xa + dot.textContent ;
+            }else {
+                    a = +xa;
+            }
             console.log(aDot);
             console.log(arg);
             console.log(y);
-            console.log(d);
             console.log(xa);
+            console.log(d);
             if (aDot == false){
-
                 point = false;
             } //else if ( aDot == true){
                 //point = true;
-           // }
-    }else if ( arg == 'b'){
+            // }
+    } else if( arg == 'b'){
         let y = b.toString();
         let xb = y.slice(0, -1);
-        let bDot = y.includes('.'); 
-        b = Number(xb);
-        
+        let bDot = xb.includes('.');
+        if (xb.endsWith('.')){
+            b = +xb + dot.textContent;
+        }else {
+                b = +xb;
+        }
+
+    //    b = xb;      
         display.textContent = a.toString() + opp + xb;
-        if (xb == 0 ){
-       //     display.textContent = a.toString();
-            arg = 'a';
-        }  
-   
+        console.log(b);
         console.log(bDot);
         console.log(arg);
         if (bDot == false){
             point = false;
-       
+        }
+        if ( xb == 0 ){
+            arg = 'a';
         } 
-    }
- 
+      //  else if ( bDot == true) {
+        //    point = true;
+      //  }
+    } 
 
     equalButton = false;
 
@@ -157,9 +169,12 @@ equal.addEventListener('click', () => {
         equalButton = true;
         point = true;
         op = true;
+        a = Number(a); 
+        b = Number(b);
         display.textContent = display.textContent.concat(equal.textContent);
     
-        if ( opp == '+'){ 
+        if ( opp == '+'){
+          
             document.getElementById('finalresult').textContent = adding(a, b);
             a = +finalresult.textContent;
             b = 0;
