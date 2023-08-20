@@ -107,28 +107,33 @@ btns.forEach(button => button.addEventListener('mouseup', (e) => {
             console.log(arg);
             console.log(y);
             console.log(d);
+            console.log(xa);
             if (aDot == false){
 
                 point = false;
             } //else if ( aDot == true){
                 //point = true;
            // }
-    } else if ( arg == 'b'){
+    }else if ( arg == 'b'){
         let y = b.toString();
         let xb = y.slice(0, -1);
         let bDot = y.includes('.'); 
         b = Number(xb);
         
         display.textContent = a.toString() + opp + xb;
+        if (xb == 0 ){
+       //     display.textContent = a.toString();
+            arg = 'a';
+        }  
    
         console.log(bDot);
         console.log(arg);
         if (bDot == false){
             point = false;
-        } //else if ( bDot == true) {
-            //point = true;
-        //}
-    } 
+       
+        } 
+    }
+ 
 
     equalButton = false;
 
