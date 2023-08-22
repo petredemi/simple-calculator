@@ -40,7 +40,7 @@ let opp = ''; //operator type +, - , *, /, %
 
 numbers.forEach(number => number.addEventListener('click', (e) => {
     if (equalButton == true ) { return;}
-
+    finalresult.textContent = '';
     if ( arg == 'a'){
         let a_string = a.toString(); 
         if (a_string.length <= 10){   
@@ -65,15 +65,12 @@ operators.forEach(operator => operator.addEventListener('click', (e) => {
         op = false;
         point = false;
         opp = operator.textContent;
-        finalresult.textContent = '';
- //   a = Number(a);
+    //    finalresult.textContent = '';
 
     if(arg == 'a'){
         display.textContent = a.toString() + operator.textContent ;
-   
     } 
     arg = 'b';
-    //console.log(opp);
 
 }));
 
@@ -118,16 +115,9 @@ btns.forEach(button => button.addEventListener('mouseup', (e) => {
             }else {
                     a = +xa;
             }
-            console.log(aDot);
-            console.log(arg);
-            console.log(y);
-            console.log(xa);
-            console.log(d);
             if (aDot == false){
                 point = false;
-            } //else if ( aDot == true){
-                //point = true;
-            // }
+            }
     } else if( arg == 'b'){
         let y = b.toString();
         let xb = y.slice(0, -1);
@@ -140,18 +130,12 @@ btns.forEach(button => button.addEventListener('mouseup', (e) => {
 
     //    b = xb;      
         display.textContent = a.toString() + opp + xb;
-        console.log(b);
-        console.log(bDot);
-        console.log(arg);
         if (bDot == false){
             point = false;
         }
         if ( xb == 0 ){
             arg = 'a';
         } 
-      //  else if ( bDot == true) {
-        //    point = true;
-      //  }
     } 
 
     equalButton = false;
