@@ -7,7 +7,7 @@ const dot = document.querySelector('#dot');
 const equal = document.querySelector('#equal');
 const del = document.querySelector('#del');
 const ac = document.querySelector('#AC');
-const finalresult = document.querySelector('#finalresult');
+const result = document.querySelector('#display-result');
 
 function adding(a, b){
      let x = a + b ;
@@ -34,14 +34,19 @@ let point = false; // dot button
 let arg = 'a'; // switch between function arguments a or b;
 let equalButton = false;
 
-let a = 0;
-let b  = 0;
+let a = 0; //function argument value
+let b  = 0; // function argument value
 let opp = ''; //operator type +, - , *, /, %
 
 numbers.forEach(number => number.addEventListener('click', (e) => {
-    if (equalButton == true ) { return;}
-    finalresult.textContent = '';
+ //   if (equalButton == true ) { return;}
+    result.textContent = '';
     if ( arg == 'a'){
+        if( equalButton == true){
+            a = 0;
+            equalButton = false;
+            point = false;
+        }
         let a_string = a.toString(); 
         if (a_string.length <= 10){   
             op = true;  
@@ -65,7 +70,6 @@ operators.forEach(operator => operator.addEventListener('click', (e) => {
         op = false;
         point = false;
         opp = operator.textContent;
-    //    finalresult.textContent = '';
 
     if(arg == 'a'){
         display.textContent = a.toString() + operator.textContent ;
@@ -89,7 +93,6 @@ btns.forEach(button => button.addEventListener('mouseup', (e) => {
     if ( point == true) {return};
     if ( arg == 'a'){
         a = a + dot.textContent;
-  //  a = a + pc;
         display.textContent = a.toString();
         point = true;
     
@@ -144,7 +147,7 @@ btns.forEach(button => button.addEventListener('mouseup', (e) => {
 
  ac.addEventListener('click', (e) => {
     display.textContent = '';
-    finalresult.textContent = '';
+    result.textContent = '';
 
     a = 0;
     b = 0;
@@ -166,28 +169,28 @@ equal.addEventListener('click', () => {
     
         if ( opp == '+'){
           
-            document.getElementById('finalresult').textContent = adding(a, b);
-            a = +finalresult.textContent;
+            document.getElementById('display-result').textContent = adding(a, b);
+            a = +result.textContent;
             b = 0;
         }
         else if ( opp == '-') {
-            document.getElementById('finalresult').textContent = substraction(a, b)
-            a = +finalresult.textContent;
+            document.getElementById('display-result').textContent = substraction(a, b)
+            a = +result.textContent;
             b = 0;
         }
         else if ( opp == 'x') { 
-            document.getElementById('finalresult').textContent = multiplication(a, b)
-            a = +finalresult.textContent;
+            document.getElementById('display-result').textContent = multiplication(a, b)
+            a = +result.textContent;
             b = 0;       
         }
         else if ( opp == '/') { 
-            document.getElementById('finalresult').textContent = dividing(a, b)
-            a = +finalresult.textContent;
+            document.getElementById('display-result').textContent = dividing(a, b)
+            a = +result.textContent;
             b = 0;
         } 
         else if ( opp == '%') { 
-            document.getElementById('finalresult').textContent = percentage(a, b)
-            a = +finalresult.textContent;
+            document.getElementById('display-result').textContent = percentage(a, b)
+            a = +result.textContent;
             b = 0;
         } 
     }
