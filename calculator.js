@@ -34,8 +34,8 @@ let point = false; // dot button
 let arg = 'a'; // switch between function arguments a or b;
 let equalButton = false;
 
-let a = 0; //function argument value
-let b  = 0; // function argument value
+let a = ''; //function argument value
+let b = ''; // function argument value
 let opp = ''; //operator type +, - , *, /, %
 
 numbers.forEach(number => number.addEventListener('click', (e) => {
@@ -43,14 +43,14 @@ numbers.forEach(number => number.addEventListener('click', (e) => {
     result.textContent = '';
     if ( arg == 'a'){
         if( equalButton == true){
-            a = 0;
+        //    a = 0;
             equalButton = false;
             point = false;
         }
         let a_string = a.toString(); 
         if (a_string.length <= 10){   
             op = true;  
-            a = Number(a + number.textContent);
+            a = a + number.textContent;
             display.textContent = a.toString();
         } else { return;}
    
@@ -58,7 +58,7 @@ numbers.forEach(number => number.addEventListener('click', (e) => {
         let b_string = b.toString();
         if ( b_string.length <= 10 ){    
             op = false;
-            b = Number( b + number.textContent);
+            b = b + number.textContent;
             display.textContent = a.toString() + opp + b.toString();  
         } else {return;}
     }    
@@ -87,7 +87,7 @@ btns.forEach(button => button.addEventListener('mouseup', (e) => {
      button.style.backgroundColor = '';
      button.style.borderStyle = '';
  }));
- let pc = '.';
+ //let pc = '.';
 
  dot.addEventListener('click', (e) => {
     if ( point == true) {return};
@@ -101,16 +101,14 @@ btns.forEach(button => button.addEventListener('mouseup', (e) => {
         display.textContent = a.toString() + opp + b.toString();
         point = true;
     }
-
  });
-
 
  del.addEventListener('click', (e) => {
     if (equalButton == true){return;}
     if ( arg == 'a') {
             let y = a.toString();
             let xa = y.slice(0, -1);
-            let d = y.slice(-1);
+     //       let d = y.slice(-1);
             let aDot = xa.includes('.');
             display.textContent = xa;
             if (xa.endsWith('.')){
@@ -140,7 +138,6 @@ btns.forEach(button => button.addEventListener('mouseup', (e) => {
             arg = 'a';
         } 
     } 
-
     equalButton = false;
 
  });
@@ -149,8 +146,8 @@ btns.forEach(button => button.addEventListener('mouseup', (e) => {
     display.textContent = '';
     result.textContent = '';
 
-    a = 0;
-    b = 0;
+    a = '';
+    b = '';
     arg = 'a';
     op = false;
     point = false;
@@ -171,27 +168,27 @@ equal.addEventListener('click', () => {
           
             document.getElementById('display-result').textContent = adding(a, b);
             a = +result.textContent;
-            b = 0;
+            b = '';
         }
         else if ( opp == '-') {
             document.getElementById('display-result').textContent = substraction(a, b)
             a = +result.textContent;
-            b = 0;
+            b = '';
         }
         else if ( opp == 'x') { 
             document.getElementById('display-result').textContent = multiplication(a, b)
             a = +result.textContent;
-            b = 0;       
+            b = '';       
         }
         else if ( opp == '/') { 
             document.getElementById('display-result').textContent = dividing(a, b)
             a = +result.textContent;
-            b = 0;
+            b = '';
         } 
         else if ( opp == '%') { 
             document.getElementById('display-result').textContent = percentage(a, b)
             a = +result.textContent;
-            b = 0;
+            b = '';
         } 
     }
 
