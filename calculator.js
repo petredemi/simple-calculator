@@ -43,7 +43,7 @@ numbers.forEach(number => number.addEventListener('click', (e) => {
     result.textContent = '';
     if ( arg == 'a'){
         if( equalButton == true){
-        //    a = 0;
+            a = '';
             equalButton = false;
             point = false;
         }
